@@ -26,18 +26,21 @@ void inicio(){
   digitalWrite(led_rojoP,HIGH);
   
 }
+void parpadeo(int led){
+ for(int i=0;i<5;i++){
+  digitalWrite(led,LOW);
+  delay(500);
+  digitalWrite(led,HIGH);
+  delay(500);
+  }
+}
 void loop() {
   
     inicio();
     
 if(digitalRead(boton)==LOW){
 }else{
-for(int i=0;i<5;i++){
-  digitalWrite(led_verdeV,LOW);
-  delay(500);
-  digitalWrite(led_verdeV,HIGH);
-  delay(500);
-  }
+  parpadeo(led_verdeV);
   
   digitalWrite(led_verdeV,LOW);
   digitalWrite(led_naranjaV,HIGH);
@@ -50,12 +53,8 @@ for(int i=0;i<5;i++){
   digitalWrite(led_rojoP,LOW);
   delay(5000);
 
-  for(int i=0;i<5;i++){
-  digitalWrite(led_verdeP,LOW);
-  delay(500);
-  digitalWrite(led_verdeP,HIGH);
-  delay(500);
-  }
+  parpadeo(led_verdeP);
+
   digitalWrite(led_verdeP,LOW);
 }
 
