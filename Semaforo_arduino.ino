@@ -7,6 +7,10 @@
 
 #define boton 13
 
+# define reloj 0
+
+int tiempoEspera =0;
+
 void setup() {
   pinMode(led_verdeV,OUTPUT);
   pinMode(led_naranjaV,OUTPUT);
@@ -14,7 +18,7 @@ void setup() {
   pinMode(led_verdeP,OUTPUT);
   pinMode(led_rojoP,OUTPUT);
   pinMode(boton,INPUT);
-   Serial.begin(9600);//Solo si monitoreo descomentar la velocidad
+  Serial.begin(9600);//Solo si monitoreo descomentar la velocidad
 }
 
 void inicio(){
@@ -35,27 +39,30 @@ void parpadeo(int led){
   }
 }
 void loop() {
+    tiempoEspera= analogRead(reloj);
+    tiempoEspera=map(tiempoEspera, 0,1023,10,60)*100;
+    Serial.println(tiempoEspera);
   
     inicio();
     
-if(digitalRead(boton)==LOW){
-}else{
-  parpadeo(led_verdeV);
+    if(digitalRead(boton)==LOW){
+    }else{
+    parpadeo(led_verdeV);
   
-  digitalWrite(led_verdeV,LOW);
-  digitalWrite(led_naranjaV,HIGH);
-  delay(4000);
+    digitalWrite(led_verdeV,LOW);
+    digitalWrite(led_naranjaV,HIGH);
+    delay(4000);
   
-  digitalWrite(led_naranjaV,LOW);
-  digitalWrite(led_rojoV,HIGH);
+    digitalWrite(led_naranjaV,LOW);
+    digitalWrite(led_rojoV,HIGH);
 
-  digitalWrite(led_verdeP,HIGH);
-  digitalWrite(led_rojoP,LOW);
-  delay(5000);
+    digitalWrite(led_verdeP,HIGH);
+    digitalWrite(led_rojoP,LOW);
+    delay(tiempoEspera);
 
-  parpadeo(led_verdeP);
+    parpadeo(led_verdeP);
 
-  digitalWrite(led_verdeP,LOW);
-}
+    digitalWrite(led_verdeP,LOW);
+    }
 
 }
