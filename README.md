@@ -6,7 +6,7 @@ Instituto Tecnológico de León
 
 Carrera: Ingeniería en Sistemas computacionales
 
-Alumno: Juan Silvestre Ramírez Becerra
+Alumno: Juan Silvestre Ramírez Becerra.
 
 Materia: Sistemas Programables
 
