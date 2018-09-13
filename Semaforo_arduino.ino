@@ -42,11 +42,13 @@ void loop() {
     tiempoEspera= analogRead(reloj);
     tiempoEspera=map(tiempoEspera, 0,1023,10,60)*100;
     Serial.println(tiempoEspera);
-  
+
     inicio();
     
     if(digitalRead(boton)==LOW){
-    }else{
+
+    }else if(digitalRead(boton)==HIGH){
+    delay(tiempoEspera);
     parpadeo(led_verdeV);
   
     digitalWrite(led_verdeV,LOW);
@@ -58,7 +60,7 @@ void loop() {
 
     digitalWrite(led_verdeP,HIGH);
     digitalWrite(led_rojoP,LOW);
-    delay(tiempoEspera);
+    delay(tiempoEspera*2);
 
     parpadeo(led_verdeP);
 
